@@ -3,7 +3,7 @@ from pymongo.server_api import ServerApi
 from urllib.parse import quote_plus
  # Encodes '@' as '%40'
 
-uri = "mongodb+srv://mishraayushman979:ayush1234@cluster0.lgsu8fk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
