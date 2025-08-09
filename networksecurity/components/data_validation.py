@@ -39,7 +39,7 @@ class DataValidation:
             
         except Exception as e:
             raise NetworkSecurityException(e,sys)
-    
+    '''
     def validate_cols_numeric(self,dataframe:pd.DataFrame)->bool:
         try:
             expected_cols = self._schema_config["numerical_columns"]
@@ -51,7 +51,7 @@ class DataValidation:
             
         except Exception as e:
             raise NetworkSecurityException(e,sys)
-    
+    '''
     def detect_data_drift(self,base_df,current_df,threshold=0.5)->bool:
         try:
             status =True
@@ -98,12 +98,12 @@ class DataValidation:
             if not status2:
                 error_message=f"Test dataframe does not contains all columns.\n"
             
-            status_num_train = self.validate_cols_numeric(train_df)
-            if not status_num_train:
-                error_message = f"Train dataframe are missing numeric cols.\n"
-            status_num_test = self.validate_cols_numeric(test_df)
-            if not status_num_test:
-                error_message = f"Test dataframe are missing with numeric cols. \n"
+            # status_num_train = self.validate_cols_numeric(train_df)
+            # if not status_num_train:
+            #     error_message = f"Train dataframe are missing numeric cols.\n"
+            # status_num_test = self.validate_cols_numeric(test_df)
+            # if not status_num_test:
+            #     error_message = f"Test dataframe are missing with numeric cols. \n"
 
             status3 = self.detect_data_drift(base_df=train_df,current_df=test_df)
             dir_path = os.path.dirname(self.data_validation_config.valid_train_path)

@@ -38,9 +38,9 @@ class NetworkDataExtract():
     
     def csv_to_json(self,file_path):
         try:
-            data = pd.read_csv(file_path)
+            data = pd.read_csv(file_path,header=0)
             data.reset_index(drop=True,inplace=True)
-            record =list(json.loads(data.to_json()).values())
+            record =list(json.loads(data.T.to_json()).values())
             return record
         except Exception as e:
             raise NetworkSecurityException(e,sys)
@@ -70,4 +70,4 @@ if __name__ == "__main__":
     records =networkobj.csv_to_json(FILE_PATH)
     print(records)
     num_of_records =networkobj.insert_data_mongodb(records,DATABASE,collection)
-    print(len(num_of_records))
+    print(num_of_records)
